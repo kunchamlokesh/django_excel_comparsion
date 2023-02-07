@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Compare Excel Files</title>
+</head>
+<body>
+    <h1>Compare Excel Files</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="file1">
+        <input type="file" name="file2">
+        <input type="submit" value="Compare">
+    </form>
+
+    {% if old_data %}
+        <h2>Old Data</h2>
+        <div>{{ old_data|safe }}</div>
+
+        <h2>New Data</h2>
+        <div>{{ new_data|safe }}</div>
+
+        <h2>Differences</h2>
+        <div>{{ differences|safe }}</div>
+
+
+    {% endif %}
+</body>
+</html>
